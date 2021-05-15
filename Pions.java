@@ -29,7 +29,7 @@ public class Pions {
     }
 
     public boolean getVivant() {
-
+        return this.estVivant;
     }
 
     public void setPos(int x, int y) {
