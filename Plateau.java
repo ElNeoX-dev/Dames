@@ -1,6 +1,6 @@
 public class Plateau {
     int taille;
-    Pions[][] cases;
+    private Pions[][] cases;
 
     public Plateau() {
         this.taille = 10;
@@ -9,7 +9,7 @@ public class Plateau {
     }
 
     public void afficher() {
-        System.out.println("  ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐");
+        System.out.println(" ─┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐");
         for(int j = 9; j >= 0; j--){
             System.out.print(j + " | ");
             for(int i = 0; i < 10; i++){
@@ -29,21 +29,20 @@ public class Plateau {
                         System.out.print("x | ");
                     }
                 }                       
-
             }
             System.out.println("");
-            System.out.println("  ├───┼───┼───┼───┼───┼───┼───┼───┼───┼───┤");
+            System.out.println(" ─├───┼───┼───┼───┼───┼───┼───┼───┼───┼───┤");
         }
-        System.out.println("  | A | B | C | D | E | F | G | H | I | J |");
-        System.out.println("  └───┴───┴───┴───┴───┴───┴───┴───┴───┴───┘");
+        System.out.println("    A   B   C   D   E   F   G   H   I   J  ");
 
+    }
 
-        //System.out.println("1 | o |   | x |   | O |   | X |   | o |   |").
-        //System.out.println("  ├───┼───┼───┼───┼───┼───┼───┼───┼───┼───┤");
+    public Pions[][] getCases (){
+        return this.cases;
     }
     
     public boolean peutManger(Pions pion) {
-        
+
     }
 
     public void majPlateau(Pions pion) {
