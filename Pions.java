@@ -25,11 +25,15 @@ public class Pions {
     }
 
     public boolean getDame() {
-
+        return this.estDame
     }
 
     public boolean getVivant() {
         return this.estVivant;
+    }
+
+    public boolean getBlanc() {
+
     }
 
     public void setPos(int x, int y) {
@@ -37,16 +41,87 @@ public class Pions {
         this.y = y;
     }
 
-    public boolean setMort() {
+    public void setMort() {
         estVivant = false;
+    }
+
+    public void setDame() {
+        estDame = true;
     }
 
     public boolean mange(Pions cible, Plateau plateau) {
 
     }
 
-    public boolean coupValide(Pion cible, Plateau plateau){
+    public boolean coupValide(Pions cible, Plateau plateau){
         
+    }
+
+    public int[] posManger(Pions cible, Plateau plateau){
+        int j;
+        int i;
+        if(this.y > cible.y){
+            j = -1;
+        } else {
+            j = 1;
+        }
+        if(this.x > cible.x){
+            i = -1;
+        } else {
+            i = 1;
+        }
+        int[] pos = {cible.y + j, cible.x + i};
+        return pos;
+    }
+
+    public boolean cheminLibre(Pions cible) {
+        int k;
+        int l;
+        if(this.y > cible.y){
+            k = -1;
+        } else {
+            k = 1;
+        }
+        if(this.x > cible.x){
+            l = -1;
+        } else {
+            l = 1;
+        }
+        int[][] condition = {{1, 1},{1, -1},{-1, 1},{-1, -1}};
+        int[] cas = {k, l};
+        int numcas;
+        
+        for(int i = 0; i < condition.length; i++) {
+            if (cas[0] == condition[i][0] && cas[1] == condition[i][1]) {
+                numcas = i;
+            }
+        }
+        if (numcas == 0) {
+            int[] depart = {this.x, this.y};
+            int[] arrivee = {cible.x, cible.y};
+        } else if(numcas == 1) {
+            int[] depart = {cible.x, this.y};
+            int[] arrivee = {this.x, cible.y};
+        } else if(numcas == 2) {
+            int[] depart = {this.x, cible.y};
+            int[] arrivee = {cible.x, this.y};
+        } else {
+            int[] depart = {cible.x, cible.y};
+            int[] arrivee = {this.x, this.y};
+        }
+        int distx;
+        int disty;
+
+        for(int j = depart[1]; j < arrivee[1]; j++) {
+            for(int i = depart[0]; i < arivee[0]; i++) {
+                disty = (int) (Math.abs(j-this.y));
+                distx = (int) (Math.abs(i-this.x));
+                if(disty == distx && plateau.getCases(i, j).estVivant) {
+                    return(false);
+                }
+            }
+        }
+        return true;
     }
 } 
 

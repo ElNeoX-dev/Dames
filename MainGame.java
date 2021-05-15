@@ -19,7 +19,7 @@ public class MainGame {
         }
         compteur = 0;
         for (int j = plateau.taille - 1; j >= plateau.taille / 2 + 1; j--) {
-            for(int i = 1 - (j % 2); i < plateau.taille; i += 2) {
+            for(int i = (j % 2); i < plateau.taille; i += 2) {
                 if (compteur < nbPions){
                     stockPions[1][compteur] = new Pions (i, j, false, true);
                     plateau.majPlateau(stockPions[1][compteur]);

@@ -1,6 +1,7 @@
 import java.util.Scanner;
 public class MainGamecopy {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         Plateau plateau = new Plateau();
         initPlateau(plateau, 40);
         plateau.cases[0][0] = null;
@@ -8,7 +9,7 @@ public class MainGamecopy {
         System.out.println (plateau);
         //les blancs commencent
         System.out.println("Veuillez indiquer la position abscisse du pion que vous voulez déplacer. Exemple : 10");
-        Scanner xJoueur = new Scanner(System.in);
+        xJoueur = 
         System.out.println("Veuillez indiquer la position abscisse du pion que vous voulez déplacer. Exemple : 8");
         Scanner yJoueur = new Scanner(System.in);
         
