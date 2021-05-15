@@ -48,8 +48,6 @@ public class Pions {
     public boolean coupValide(Pion cible, Plateau plateau){
         
     }
-
-
 } 
 
 
