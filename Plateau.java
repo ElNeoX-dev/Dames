@@ -2,8 +2,9 @@ public class Plateau {
     int taille;
     Pions[][] cases;
 
-    public Plateau(int taille) {
-        this.taille = taille;
+    public Plateau() {
+        this.taille = 10;
+        cases = new Pions [taille][taille];
 
     }
 
@@ -14,4 +15,9 @@ public class Plateau {
     public boolean PeutManger(Pions pion) {
         
     }
+
+    public void majPlateau(Pions pion) {
+        cases [pion.getY()][pion.getX()] = pion;
+    }
+
 }

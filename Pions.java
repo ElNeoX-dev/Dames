@@ -17,11 +17,11 @@ public class Pions {
 
     
     public int getX() {
-
+        return this.x;
     }
 
     public int getY() {
-        
+        return this.y;
     }
 
     public boolean getDame() {
@@ -45,7 +45,7 @@ public class Pions {
 
     }
 
-    public boolean coupValide(Pion cible){
+    public boolean coupValide(Pion cible, Plateau plateau){
         
     }
 
