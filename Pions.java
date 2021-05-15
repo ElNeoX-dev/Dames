@@ -6,12 +6,12 @@ public class Pions {
     boolean estVivant;
 
 
-    public Pions(int x, int y, boolean estBlanc) {
+    public Pions(int x, int y, boolean estBlanc, boolean estVivant) {
         this.x = x;
         this.y = y;
         this.estBlanc = estBlanc;
         estDame = false;
-        estVivant = true;
+        this.estVivant = estVivant;
     }
 
 
