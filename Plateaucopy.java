@@ -1,4 +1,4 @@
-public class Plateau {
+public class Plateaucopy {
     int taille;
     private Pions[][] cases;
 
@@ -103,12 +103,17 @@ public class Plateau {
         
     }
 
-    public boolean bouger(Pions pion) {
-        if(peutManger(pion)) {
-
-        } else {
-            
+    public boolean bouger(Pions pion, int x, int y) {
+        if (coupValide(this.cases[x][y]{
+            Pions cible = cases[y][x];
+            int [][] posFinale = pion.posManger(cible);
+            if(peutManger(pion) && !(cases[posFinale[0]] [posFinale[1]]).getestVivant() && ) {
+                pion.setPos(posFinale[0], posFinale[1]); 
+            } else {
+                pion.setPos(x, y);
+            }
         }
+        
     }
 
 }
