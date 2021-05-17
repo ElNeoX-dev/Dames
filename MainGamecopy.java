@@ -9,9 +9,9 @@ public class MainGamecopy {
         System.out.println (plateau);
         //les blancs commencent
         System.out.println("Veuillez indiquer la position abscisse du pion que vous voulez déplacer. Exemple : 10");
-        xJoueur = 
+        int xJoueur = sc.nextInt();
         System.out.println("Veuillez indiquer la position abscisse du pion que vous voulez déplacer. Exemple : 8");
-        Scanner yJoueur = new Scanner(System.in);
+        int yJoueur = sc.nextInt();
         
     }
 
