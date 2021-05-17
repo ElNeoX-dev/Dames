@@ -24,15 +24,15 @@ public class Pions {
         return this.y;
     }
 
-    public boolean getDame() {
+    public boolean getestDame() {
         return this.estDame
     }
 
-    public boolean getVivant() {
+    public boolean getestVivant() {
         return this.estVivant;
     }
 
-    public boolean getBlanc() {
+    public boolean getestBlanc() {
 
     }
 

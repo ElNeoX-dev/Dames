@@ -42,12 +42,12 @@ public class Plateau {
     }
    
     public boolean peutManger(Pions pion) {
-        if(!pion.getDame()){
+        if(!pion.getestDame()){
             int x = pion.getX();
             int y = pion.getY();
             for(int j = y - 1; j <= y+1; j += 2){
                for(int i = x-1; i <= x+1; i += 2){              
-                   if(cases[j][i].getVivant() && (pion.getBlanc() != cases[j][i].getBlanc())){
+                   if(cases[j][i].getestVivant() && (pion.getestBlanc() != cases[j][i].getestBlanc())){
                        int[] posCible = pion.posManger(cases[j][i], this);
                        if(!cases[posCible[0]][posCible[1]].estVivant) {
                            return(true);
@@ -60,12 +60,12 @@ public class Plateau {
             int disty;
             int distx;
             Pions cible;
-            for(int j = 0; j < this.taille - 1; j++) {
-                for(int i = 0; i < this.taille -1; i++){
+            for(int j = 1; j < this.taille - 2; j++) {
+                for(int i = 1; i < this.taille - 2; i++){
                     cible = cases[j][i];
                     disty = (int) (Math.abs(j-pion.getY()));
                     distx = (int) (Math.abs(i-pion.getX()));
-                    if(distx == disty && cible.getVivant() && (pion.getBlanc() != cible.getBlanc()) && pion.cheminLibre(cible)) {
+                    if(distx == disty && cible.getestVivant() && (pion.getestBlanc() != cible.getestBlanc()) && pion.cheminLibre(cible)) {
                         int[] posCible = pion.posManger(cible, this);
                         if(!cases[posCible[0]][posCible[1]].estVivant) {
                             return true;
