@@ -25,7 +25,7 @@ public class Pions {
     }
 
     public boolean getestDame() {
-        return this.estDame
+        return this.estDame;
     }
 
     public boolean getestVivant() {
@@ -33,7 +33,7 @@ public class Pions {
     }
 
     public boolean getestBlanc() {
-
+        return this.estBlanc;
     }
 
     public void setPos(int x, int y) {
@@ -41,11 +41,11 @@ public class Pions {
         this.y = y;
     }
 
-    public void setMort() {
+    public void setestVivant() {
         estVivant = false;
     }
 
-    public void setDame() {
+    public void setestDame() {
         estDame = true;
     }
 
@@ -53,11 +53,9 @@ public class Pions {
 
     }
 
-    public boolean coupValide(Pions cible, Plateau plateau){
-        
-    }
 
-    public int[] posManger(Pions cible, Plateau plateau){
+
+    public int[] posManger(Pions cible){
         int j;
         int i;
         if(this.y > cible.y){
@@ -70,8 +68,14 @@ public class Pions {
         } else {
             i = 1;
         }
-        int[] pos = {cible.y + j, cible.x + i};
-        return pos;
+        if(cible.y + j < 0 || cible.y + j > 9 || cible.x + i < 0 || cible.x + i >0){
+            int[] pos = {0, 1};
+            return pos;
+        } else {
+            int[] pos = {cible.y + j, cible.x + i};
+            return pos;
+        }
+
     }
 
     public boolean cheminLibre(Pions cible) {
