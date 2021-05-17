@@ -104,7 +104,7 @@ public class Plateaucopy {
     }
 
     public boolean bouger(Pions pion, int x, int y) {
-        if (coupValide(this.cases[x][y]{
+        if (coupValide(this.cases[x][y])){
             Pions cible = cases[y][x];
             int [][] posFinale = pion.posManger(cible);
             if(peutManger(pion) && !(cases[posFinale[0]] [posFinale[1]]).getestVivant() && ) {
