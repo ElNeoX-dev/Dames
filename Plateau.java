@@ -136,25 +136,19 @@ public class Plateau {
         int a = pion.getY();
         int b = pion.getX();
         int [] posManger = pion.posManger(cible);
-        System.out.println((cible).getestVivant());
-        System.out.println(posManger[0] != 0);
-        System.out.println(posManger[1] != 1);
-        System.out.println(!cases[posManger[0]][posManger[1]].estVivant);
-        System.out.println(pion.dist(cible) <= distLim);
-        if(peutManger(pion) && (cible).getestVivant() && posManger[0] != 0 && posManger[1] != 1 && !cases[posManger[0]][posManger[1]].estVivant && pion.dist(cible) <= distLim) {
+        if(peutManger(pion) && (cible).getestVivant() && posManger[0] != 0 && posManger[1] != 1 && !cases[posManger[0]][posManger[1]].estVivant && pion.dist(cible) <= distLim && pion.dist(cible) >= 2) {
             pion.setPos(posManger[0], posManger[1]);
             update(a, b, pion);
             cible.setestVivant();
             afficher();
             return true;
-        } else if(!cible.estVivant && pion.dist(cible) <= distLim) {
+        } else if(!cible.estVivant && pion.dist(cible) <= distLim && !peutManger(pion)) {
             pion.setPos(cible.getX(), cible.getY());
             update(a, b, pion);
             afficher();
             return true;
         } else {
             afficher();
-            System.out.println("a");
             return false;
         }
     }
