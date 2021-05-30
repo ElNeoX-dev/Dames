@@ -107,7 +107,7 @@ public class Plateaucopy {
         if (coupValide(this.cases[x][y])){
             Pions cible = cases[y][x];
             int [] posManger = pion.posManger(cible);
-            if(peutManger(pion) && !cible.getestVivant() && posManger[0] != 0 && posManger[1] != 1 ) {
+            if(peutManger(pion) && !(cible).getestVivant() && posManger[0] != 0 && posManger[1] != 1 ) {
                 pion.setPos(posManger[0], posManger[1]); 
             } else {
                 pion.setPos(x, y);
