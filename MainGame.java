@@ -4,10 +4,8 @@ public class MainGame {
         Plateau plateau = new Plateau();
         Scanner choix = new Scanner(System.in);
         initPlateau(plateau, 40);
-<<<<<<< HEAD
-        System.out.println("Bienvenue sur le jeu de dames")
+        System.out.println("Bienvenue sur le jeu de dames");
         plateau.afficher();
-=======
         System.out.println("Bienvenue sur le jeu de dames");
         System.out.println("Les règles sont celles des dames classiques");
         System.out.println("Lorsque vous pouvez manger un pion, vous êtes obligés de le faire");
@@ -34,7 +32,7 @@ public class MainGame {
                 xJoueur = conversionLettreChiffre();
                 System.out.println("Choisissez votre ligne de 0 à 9 du pions que vous souhaitez bouger");
                 yJoueur = choix.nextInt();
-            } while(xJoueur < 0 || yJoueur > 9 || xJoueur > 9 || yJoueur < 0 || !plateau.choixPionValide(plateau.getCases(xJoueur, yJoueur)));
+            } while(xJoueur < 0 || yJoueur > 9 || xJoueur > 9 || yJoueur < 0 || !plateau.choixPionValide(plateau.getCases(xJoueur, yJoueur), nbTours));
             do {
                 System.out.println("Choisissez votre colone de A à J de la case cible");  
                 xCible = conversionLettreChiffre();
@@ -47,7 +45,7 @@ public class MainGame {
         }
         System.out.println("fini");
 
->>>>>>> a349451ba43005a05b73b4f1134b32f9600bd193
+
     }
 
     public static void initPlateau(Plateau plateau, int nbPions) {

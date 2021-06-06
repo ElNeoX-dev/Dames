@@ -153,8 +153,8 @@ public class Plateau {
         }
     }
 
-    public boolean choixPionValide(Pions pion) {
-        if(peutManger(pion)) {
+    public boolean choixPionValide(Pions pion, int nbTours) {
+        if((nbTours % 2 == 0) == pion.getestBlanc() && peutManger(pion)) {
             return true;
         } else {
             int ligne;
