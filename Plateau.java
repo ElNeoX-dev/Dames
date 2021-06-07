@@ -43,7 +43,7 @@ public class Plateau {
     }
    
     public boolean peutManger(Pions pion) {
-        if(!pion.getestDame()){
+        if(!pion.getestDame() && pion.getestVivant()){
             int x = pion.getX();
             int y = pion.getY();
             int iMin;
@@ -83,7 +83,7 @@ public class Plateau {
                 }
             }
             return (false);
-        } else {
+        } else if (pion.getestVivant()){
             int disty;
             int distx;
             Pions cible;
@@ -104,6 +104,7 @@ public class Plateau {
             }
             return false;
         }
+        return false;
     }
 
     public void stocksPionPlateau(Pions pion, int compteur, int nbPions) {
@@ -150,12 +151,9 @@ public class Plateau {
     }
 
     public boolean choixPionValide(Pions pion, int nbTours) {
-        System.out.println(pion.getestVivant());
-        System.out.println(peutManger(pion));
         if((nbTours % 2 == 0) == pion.getestBlanc() && peutManger(pion) && pion.getestVivant()) {
             return true;
         } else if (pion.getestVivant() && (nbTours % 2 == 0) == pion.getestBlanc()){
-            System.out.println("caca");
             int ligne;
             if(pion.getestBlanc()){
                 ligne = 0;
@@ -164,7 +162,6 @@ public class Plateau {
             }
             for(int i = 0; i < stockPions[ligne].length; i++) {
                 if(peutManger(stockPions[ligne][i])) {
-                    System.out.println("caca2");
                     return false;
                 }
             }
