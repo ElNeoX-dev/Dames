@@ -143,7 +143,7 @@ public class Pions {
         } else if(!this.estDame && this.estBlanc) {
             return(distx == 1 && disty == 1);
         } else {
-            return (distx == (int) Math.abs(disty);
+            return (distx == (int) Math.abs(disty));
         }
 
     }
