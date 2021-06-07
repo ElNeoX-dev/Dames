@@ -133,9 +133,19 @@ public class Pions {
         return true;
     }
 
-    public boolean dist(Pions cible) {
-        int distx = this.x - cible.x;
+    public boolean distanceValide(Pions cible) {
+        int distx =(int) Math.abs(this.x - cible.x);
         int disty = this.y - cible.y;
+        
+        if(!this.estDame && this.estBlanc) {
+            return(distx == 1 && disty == -1);
+            
+        } else if(!this.estDame && this.estBlanc) {
+            return(distx == 1 && disty == 1);
+        } else {
+            return (distx == (int) Math.abs(disty);
+        }
+
     }
 } 
 

@@ -136,13 +136,13 @@ public class Plateau {
         int a = pion.getY();
         int b = pion.getX();
         int [] posManger = pion.posManger(cible);
-        if(peutManger(pion) && (cible).getestVivant() && posManger[0] != 0 && posManger[1] != 1 && !cases[posManger[0]][posManger[1]].estVivant) {
+        if(peutManger(pion) && (cible).getestVivant() && posManger[0] != 0 && posManger[1] != 1 && !cases[posManger[0]][posManger[1]].estVivant && pion.distanceValide(cible)) {
             pion.setPos(posManger[1], posManger[0]);
             update(a, b, pion);
             cible.setestVivant();
             afficher();
             return true;
-        } else if(!cible.estVivant && !peutManger(pion)) {
+        } else if(!cible.estVivant && !peutManger(pion) && pion.distanceValide(cible)) {
             pion.setPos(cible.getX(), cible.getY());
             update(a, b, pion);
             afficher();
