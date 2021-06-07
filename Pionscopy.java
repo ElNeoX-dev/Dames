@@ -1,4 +1,4 @@
-public class Pions {
+public class Pionscopy {
     private int x;
     private int y;
     boolean estBlanc;
