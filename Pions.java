@@ -136,12 +136,14 @@ public class Pions {
     public boolean distanceValide(Pions cible) {
         int distx =(int) Math.abs(this.x - cible.x);
         int disty = this.y - cible.y;
-        
-        if(!this.estDame && this.estBlanc) {
-            return(distx == 1 && disty == -1);
-            
-        } else if(!this.estDame && this.estBlanc) {
+        System.out.println("a" + cible.estVivant);
+        System.out.println("b" + (cible.estBlanc != this.estBlanc));
+        if(!this.estDame && cible.estVivant && (cible.estBlanc != this.estBlanc)) {
+            return(distx == (int) Math.abs(disty) && distx == 1);
+        } else if(!this.estDame && !this.estBlanc) {
             return(distx == 1 && disty == 1);
+        } else if(!this.estDame && this.estBlanc) {
+            return (distx == 1 && disty == -1);
         } else {
             return (distx == (int) Math.abs(disty));
         }

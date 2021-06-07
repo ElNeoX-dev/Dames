@@ -130,6 +130,8 @@ public class Plateau {
         int a = pion.getY();
         int b = pion.getX();
         int [] posManger = pion.posManger(cible);
+        System.out.println(peutManger(pion));
+        System.out.println(pion.distanceValide(cible));
         if(peutManger(pion) && (cible).getestVivant() && posManger[0] != 0 && posManger[1] != 1 && !cases[posManger[0]][posManger[1]].estVivant && pion.distanceValide(cible)) {
             pion.setPos(posManger[1], posManger[0]);
             update(a, b, pion);
@@ -148,7 +150,7 @@ public class Plateau {
     }
 
     public boolean choixPionValide(Pions pion, int nbTours) {
-        if((nbTours % 2 == 0) == pion.getestBlanc() && peutManger(pion)) {
+        if((nbTours % 2 == 0) == pion.getestBlanc() && peutManger(pion) && pion.getestVivant()) {
             return true;
         } else {
             int ligne;
@@ -180,6 +182,11 @@ public class Plateau {
     public void update(int a, int b, Pions pion) {
         cases[pion.getY()][pion.getX()] = pion;
         cases[a][b] = new Pions(a, b, true, false);
+        if (pion.getY() == 9 && pion.getestBlanc()){
+            pion.setestDame();
+        } else if (pion.getY() == 0 && !pion.getestBlanc()) {
+            pion.setestDame();
+        }
 
     }
 

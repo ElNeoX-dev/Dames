@@ -38,10 +38,8 @@ public class MainGame {
                 xCible = conversionLettreChiffre();
                 System.out.println("Choisissez votre ligne de 0 à 9 de la case cible");
                 yCible = choix.nextInt();
-            } while(xCible < 0 || yCible > 9 || xCible > 9 || yCible < 0 || !plateau.bouger(plateau.getCases(xJoueur, yJoueur), plateau.getCases(xCible, yCible)));
-            
-            nbTours++;  
-            System.out.println(nbTours);          
+            } while(xCible < 0 || yCible > 9 || xCible > 9 || yCible < 0 || !plateau.bouger(plateau.getCases(xJoueur, yJoueur), plateau.getCases(xCible, yCible)));         
+            nbTours++;           
         }
         System.out.println("fini");
 
