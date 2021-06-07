@@ -5,7 +5,6 @@ public class Pions {
     boolean estDame;
     boolean estVivant;
 
-
     public Pions(int y, int x, boolean estBlanc, boolean estVivant) {
         this.x = x;
         this.y = y;
@@ -14,8 +13,7 @@ public class Pions {
         this.estVivant = estVivant;
     }
 
-
-    
+   
     public int getX() {
         return this.x;
     }
@@ -121,8 +119,8 @@ public class Pions {
         int distx;
         int disty;
 
-        for(int j = depart[1]; j < arrivee[1]; j++) {
-            for(int i = depart[0]; i < arrivee[0]; i++) {
+        for(int j = depart[1] + 1; j < arrivee[1]; j++) {
+            for(int i = depart[0] + 1; i < arrivee[0]; i++) {
                 disty = (int) (Math.abs(j-this.y));
                 distx = (int) (Math.abs(i-this.x));
                 if(disty == distx && plateau.getCases(i, j).estVivant) {
@@ -150,5 +148,3 @@ public class Pions {
 
     }
 } 
-
-

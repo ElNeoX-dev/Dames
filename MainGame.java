@@ -11,7 +11,6 @@ public class MainGame {
         System.out.println("Lorsque vous pouvez manger un pion, vous êtes obligés de le faire");
         System.out.println("Pour manger un pions, vous devez sélectionner la case du pion que vous voulez manger");
         int nbTours = 0;
-        boolean couleur;
         String nomCouleur;
         int xJoueur;
         int yJoueur;
@@ -20,10 +19,8 @@ public class MainGame {
         while(!plateau.estFini()) {
             plateau.afficher();
             if(nbTours % 2 == 0) {
-                couleur = true;
                 nomCouleur = "blanc";
             } else {
-                couleur = false;
                 nomCouleur = "noir";
             }
             System.out.println("C'est à " + nomCouleur + " de jouer");

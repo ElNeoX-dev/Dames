@@ -1,3 +1,4 @@
+
 public class Plateau {
     int taille;
     private Pions[][] cases;
@@ -19,13 +20,13 @@ public class Plateau {
                 }
                 else if (cases[j][i].estBlanc) {
                     if (cases[j][i].estDame) {
-                        System.out.print("O | ");
+                        System.out.print("B | ");
                     } else {
                         System.out.print("o | ");
                     }
                 } else {
                     if (cases[j][i].estDame) {
-                        System.out.print("X | ");
+                        System.out.print("N | ");
                     } else {
                         System.out.print("x | ");
                     }
@@ -82,7 +83,7 @@ public class Plateau {
                     }
                 }
             }
-            return (false);
+            return false;
         } else if (pion.getestVivant()){
             int disty;
             int distx;
@@ -92,9 +93,9 @@ public class Plateau {
                     cible = cases[j][i];
                     disty = (int) (Math.abs(j-pion.getY()));
                     distx = (int) (Math.abs(i-pion.getX()));
-                    if(distx == disty && cible.getestVivant() && (pion.getestBlanc() != cible.getestBlanc()) && pion.cheminLibre(cible, this)) {
+                    if((distx == disty) && cible.getestVivant() && (pion.getestBlanc() != cible.getestBlanc()) && pion.cheminLibre(cible, this)) {
                         int[] posCible = pion.posManger(cible);
-                        if(!cases[posCible[0]][posCible[1]].estVivant && posCible[0] != 0 && posCible[1]!= 1) {
+                        if(!cases[posCible[0]][posCible[1]].getestVivant() && posCible[0] != 0 && posCible[1]!= 1) {
                             return true;
                         }
                     }
@@ -131,13 +132,15 @@ public class Plateau {
         int a = pion.getY();
         int b = pion.getX();
         int [] posManger = pion.posManger(cible);
-        System.out.println(peutManger(pion));
-        System.out.println(pion.distanceValide(cible));
         if(peutManger(pion) && (cible).getestVivant() && posManger[0] != 0 && posManger[1] != 1 && !cases[posManger[0]][posManger[1]].estVivant && pion.distanceValide(cible)) {
             pion.setPos(posManger[1], posManger[0]);
             update(a, b, pion);
             cible.setestVivant();
             afficher();
+            if(peutManger(pion)) {
+                System.out.println("Vous pouvez manger un deuxième pion !");
+                return false;
+            }
             return true;
         } else if(!cible.estVivant && !peutManger(pion) && pion.distanceValide(cible)) {
             pion.setPos(cible.getX(), cible.getY());
@@ -146,6 +149,7 @@ public class Plateau {
             return true;
         } else {
             afficher();
+            System.out.println("Vous n'avez pas choisi une cible valide :'(");
             return false;
         }
     }
@@ -162,11 +166,13 @@ public class Plateau {
             }
             for(int i = 0; i < stockPions[ligne].length; i++) {
                 if(peutManger(stockPions[ligne][i])) {
+                    System.out.println("Un de vos pions peut en manger un autre !");
                     return false;
                 }
             }
             return true; 
         }
+        System.out.println("Vous avez choisi une case vide !");
         return false;
     }
 
@@ -191,5 +197,4 @@ public class Plateau {
         }
 
     }
-
 }
