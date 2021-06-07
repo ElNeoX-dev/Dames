@@ -150,9 +150,12 @@ public class Plateau {
     }
 
     public boolean choixPionValide(Pions pion, int nbTours) {
+        System.out.println(pion.getestVivant());
+        System.out.println(peutManger(pion));
         if((nbTours % 2 == 0) == pion.getestBlanc() && peutManger(pion) && pion.getestVivant()) {
             return true;
-        } else {
+        } else if (pion.getestVivant() && (nbTours % 2 == 0) == pion.getestBlanc()){
+            System.out.println("caca");
             int ligne;
             if(pion.getestBlanc()){
                 ligne = 0;
@@ -161,11 +164,13 @@ public class Plateau {
             }
             for(int i = 0; i < stockPions[ligne].length; i++) {
                 if(peutManger(stockPions[ligne][i])) {
+                    System.out.println("caca2");
                     return false;
                 }
             }
-            return true;
+            return true; 
         }
+        return false;
     }
 
     public boolean estFini() {
