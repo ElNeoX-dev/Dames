@@ -4,7 +4,6 @@ public class MainGame {
         Plateau plateau = new Plateau();
         Scanner choix = new Scanner(System.in);
         initPlateau(plateau, 40);
-        System.out.println("Bienvenue sur le jeu de dames");
         plateau.afficher();
         System.out.println("Bienvenue sur le jeu de dames");
         System.out.println("Les règles sont celles des dames classiques");
@@ -17,7 +16,6 @@ public class MainGame {
         int xCible;
         int yCible;
         while(!plateau.estFini()) {
-            plateau.afficher();
             if(nbTours % 2 == 0) {
                 nomCouleur = "blanc";
             } else {

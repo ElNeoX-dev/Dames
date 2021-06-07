@@ -1,9 +1,9 @@
 public class Pions {
     private int x;
     private int y;
-    boolean estBlanc;
-    boolean estDame;
-    boolean estVivant;
+    private boolean estBlanc;
+    private boolean estDame;
+    private boolean estVivant;
 
     public Pions(int y, int x, boolean estBlanc, boolean estVivant) {
         this.x = x;
@@ -134,10 +134,9 @@ public class Pions {
     public boolean distanceValide(Pions cible) {
         int distx =(int) Math.abs(this.x - cible.x);
         int disty = this.y - cible.y;
-        System.out.println("a" + cible.estVivant);
-        System.out.println("b" + (cible.estBlanc != this.estBlanc));
+        System.out.println("a" + (distx == (int) Math.abs(disty)));
         if(!this.estDame && cible.estVivant && (cible.estBlanc != this.estBlanc)) {
-            return(distx == (int) Math.abs(disty) && distx == 1);
+            return((distx == (int) Math.abs(disty)) && distx == 1);
         } else if(!this.estDame && !this.estBlanc) {
             return(distx == 1 && disty == 1);
         } else if(!this.estDame && this.estBlanc) {

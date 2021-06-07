@@ -1,5 +1,6 @@
-
+import java.util.Scanner;
 public class Plateau {
+    Scanner choix = new Scanner(System.in);
     int taille;
     private Pions[][] cases;
     private Pions[][] stockPions = new Pions [2][20];
@@ -15,17 +16,17 @@ public class Plateau {
         for(int j = 9; j >= 0; j--){
             System.out.print(j + " | ");
             for(int i = 0; i < 10; i++){
-                if(!cases[j][i].estVivant){
+                if(!cases[j][i].getestVivant()){
                     System.out.print("  | ");
                 }
-                else if (cases[j][i].estBlanc) {
-                    if (cases[j][i].estDame) {
+                else if (cases[j][i].getestBlanc()) {
+                    if (cases[j][i].getestDame()) {
                         System.out.print("B | ");
                     } else {
                         System.out.print("o | ");
                     }
                 } else {
-                    if (cases[j][i].estDame) {
+                    if (cases[j][i].getestDame()) {
                         System.out.print("N | ");
                     } else {
                         System.out.print("x | ");
@@ -77,7 +78,7 @@ public class Plateau {
                for(int i = iMin; i <= iMax; i++){              
                    if(cases[j][i].getestVivant() && (pion.getestBlanc() != cases[j][i].getestBlanc())){
                        int[] posCible = pion.posManger(cases[j][i]);
-                       if(!cases[posCible[0]][posCible[1]].estVivant) {
+                       if(!cases[posCible[0]][posCible[1]].getestVivant()) {
                            return(true);
                        }
                     }
@@ -132,17 +133,23 @@ public class Plateau {
         int a = pion.getY();
         int b = pion.getX();
         int [] posManger = pion.posManger(cible);
-        if(peutManger(pion) && (cible).getestVivant() && posManger[0] != 0 && posManger[1] != 1 && !cases[posManger[0]][posManger[1]].estVivant && pion.distanceValide(cible)) {
+        System.out.println(a);
+        System.out.println(b);
+        System.out.println("b" + peutManger(pion));
+        System.out.println("c" + (cible).getestVivant());
+        System.out.println("d" + !cases[posManger[0]][posManger[1]].getestVivant());
+        System.out.println("e" + pion.distanceValide(cible));
+        if(peutManger(pion) && (cible).getestVivant() && posManger[0] != 0 && posManger[1] != 1 && !cases[posManger[0]][posManger[1]].getestVivant() && pion.distanceValide(cible)) {
             pion.setPos(posManger[1], posManger[0]);
             update(a, b, pion);
             cible.setestVivant();
             afficher();
             if(peutManger(pion)) {
-                System.out.println("Vous pouvez manger un deuxième pion !");
-                return false;
+                aDejaManger(pion);
+                return true;
             }
             return true;
-        } else if(!cible.estVivant && !peutManger(pion) && pion.distanceValide(cible)) {
+        } else if(!cible.getestVivant() && !peutManger(pion) && pion.distanceValide(cible)) {
             pion.setPos(cible.getX(), cible.getY());
             update(a, b, pion);
             afficher();
@@ -179,7 +186,7 @@ public class Plateau {
     public boolean estFini() {
         for(int j = 0; j < 2; j++) {
             for(int i = 0; i < 20; i++) {
-                if(stockPions[j][i].estVivant == true) {
+                if(stockPions[j][i].getestVivant() == true) {
                     return false;
                 }
             }
@@ -196,5 +203,21 @@ public class Plateau {
             pion.setestDame();
         }
 
+    }
+    public static int conversionLettreChiffre() {
+        Scanner lettre = new Scanner(System.in);        
+        return(lettre.next().charAt(0) - 65);
+    }
+
+    public void aDejaManger(Pions pion) {
+        System.out.println("Vous pouvez manger un autre pion");
+        int xCible;
+        int yCible;
+        do {
+            System.out.println("Choisissez votre colone de A à J de la case cible");  
+            xCible = conversionLettreChiffre();
+            System.out.println("Choisissez votre ligne de 0 à 9 de la case cible");
+            yCible = choix.nextInt();
+        } while(xCible < 0 || yCible > 9 || xCible > 9 || yCible < 0 || !bouger(pion, cases[yCible][xCible]));    
     }
 }
