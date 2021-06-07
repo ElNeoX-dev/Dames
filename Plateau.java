@@ -137,7 +137,7 @@ public class Plateau {
         int b = pion.getX();
         int [] posManger = pion.posManger(cible);
         if(peutManger(pion) && (cible).getestVivant() && posManger[0] != 0 && posManger[1] != 1 && !cases[posManger[0]][posManger[1]].estVivant && pion.dist(cible) <= distLim && pion.dist(cible) >= 2) {
-            pion.setPos(posManger[0], posManger[1]);
+            pion.setPos(posManger[1], posManger[0]);
             update(a, b, pion);
             cible.setestVivant();
             afficher();

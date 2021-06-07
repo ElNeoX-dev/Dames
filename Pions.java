@@ -133,8 +133,9 @@ public class Pions {
         return true;
     }
 
-    public int dist(Pions cible) {
-        return (int) ( (Math.abs(this.x-cible.x) + Math.abs(this.y-cible.y)  ) );
+    public boolean dist(Pions cible) {
+        int distx = this.x - cible.x;
+        int disty = this.y - cible.y;
     }
 } 
 
