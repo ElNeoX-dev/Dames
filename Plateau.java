@@ -127,12 +127,6 @@ public class Plateau {
     }
 
     public boolean bouger(Pions pion, Pions cible) {
-        int distLim;
-        if(!pion.getestDame()) {
-            distLim = 2;
-        } else {
-            distLim = 100;
-        }
         int a = pion.getY();
         int b = pion.getX();
         int [] posManger = pion.posManger(cible);
