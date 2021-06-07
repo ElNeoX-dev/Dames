@@ -134,7 +134,6 @@ public class Pions {
     public boolean distanceValide(Pions cible) {
         int distx =(int) Math.abs(this.x - cible.x);
         int disty = this.y - cible.y;
-        System.out.println("a" + (distx == (int) Math.abs(disty)));
         if(!this.estDame && cible.estVivant && (cible.estBlanc != this.estBlanc)) {
             return((distx == (int) Math.abs(disty)) && distx == 1);
         } else if(!this.estDame && !this.estBlanc) {

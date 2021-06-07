@@ -133,12 +133,6 @@ public class Plateau {
         int a = pion.getY();
         int b = pion.getX();
         int [] posManger = pion.posManger(cible);
-        System.out.println(a);
-        System.out.println(b);
-        System.out.println("b" + peutManger(pion));
-        System.out.println("c" + (cible).getestVivant());
-        System.out.println("d" + !cases[posManger[0]][posManger[1]].getestVivant());
-        System.out.println("e" + pion.distanceValide(cible));
         if(peutManger(pion) && (cible).getestVivant() && posManger[0] != 0 && posManger[1] != 1 && !cases[posManger[0]][posManger[1]].getestVivant() && pion.distanceValide(cible)) {
             pion.setPos(posManger[1], posManger[0]);
             update(a, b, pion);
