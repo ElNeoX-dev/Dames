@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class MainGame {
+public class LesDames {
     public static void main(String[] args) {
         Plateau plateau = new Plateau(); //Création du plateau
         Scanner choix = new Scanner(System.in);
