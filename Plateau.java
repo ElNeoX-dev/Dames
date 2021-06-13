@@ -143,7 +143,7 @@ public class Plateau {
         int b = pion.getX();
         int [] posManger = pion.posManger(cible);
         //Si la distance est valide et que le pion peut le manger
-        if(peutManger(pion) && pion.distanceValide(cible)) {
+        if(peutManger(pion) && pion.distanceValide(cible) && (posManger[0] != 0 && posManger[1] != 1)) {
             pion.setPos(posManger[1], posManger[0]); //On met  à jour la position du pion
             update(a, b, pion); //On met à jour le plateau
             cible.setestVivant(); //On tue la cible
