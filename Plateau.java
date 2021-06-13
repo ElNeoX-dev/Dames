@@ -78,14 +78,15 @@ public class Plateau {
    
     //Vérifie si un pion peut manger
     public boolean peutManger(Pions pion) {
+
         if(!pion.getestDame() && pion.getestVivant()){ //Si le pion n'est pas une dame
             int[] bornes = borneAnalyse(pion);
             //On vérifie que la cible est vivante et que la case derrière le pion est libre
             for(int j = bornes[2]; j <= bornes[3]; j++){
-               for(int i = bornes[0]; i <= bornes[1]; i++){              
+               for(int i = bornes[0]; i <= bornes[1]; i++){            
                    if(cases[j][i].getestVivant() && (pion.getestBlanc() != cases[j][i].getestBlanc())){
                        int[] posCible = pion.posManger(cases[j][i]); //Détermination de la position derrière le pion
-                       if(!cases[posCible[0]][posCible[1]].getestVivant() && (posCible[0] != 0 && posCible[1] != 1) ) {
+                       if(!cases[posCible[0]][posCible[1]].getestVivant() && !((posCible[0] == 0) && (posCible[1] == 1))) {
                            return(true); //On renvoie true si toutes les conditions son vérifiées
                        }
                     }
@@ -106,7 +107,7 @@ public class Plateau {
                     //On regarde unisuement les cases en diagnonales, que la cible est vivante, dans l'autre équipe et que le chemin d'accès est libre
                     if((distx == disty) && cible.getestVivant() && (pion.getestBlanc() != cible.getestBlanc()) && pion.cheminLibre(cible, this)) {
                         int[] posCible = pion.posManger(cible); //Détermination de la position derrière le pion
-                            return (!cases[posCible[0]][posCible[1]].getestVivant() && (posCible[0] != 0 && posCible[1] != 1));
+                            return (!cases[posCible[0]][posCible[1]].getestVivant() && !((posCible[0] == 0) && (posCible[1] == 1)));
                     }
                 }
             }
@@ -143,10 +144,10 @@ public class Plateau {
         int b = pion.getX();
         int [] posManger = pion.posManger(cible);
         //Si la distance est valide et que le pion peut le manger
-        if(peutManger(pion) && pion.distanceValide(cible) && (posManger[0] != 0 && posManger[1] != 1)) {
+        if(peutManger(pion) && pion.distanceValide(cible) && !((posManger[0] == 0) && (posManger[1] == 1))) {
             pion.setPos(posManger[1], posManger[0]); //On met  à jour la position du pion
             update(a, b, pion); //On met à jour le plateau
-            cible.setestVivant(); //On tue la cible
+            cible.setestVivant(); //On tue la cible 
             afficher(); //On affiche le plateau
             if(peutManger(pion)) {
                 aDejaManger(pion); //Si le pion peut encore manger, il doit manger ce pion
